@@ -15,9 +15,11 @@ $text = " 'So d'ye get tae leave soon and get a house?' She squints up at me.
         'I bet you didnae mean it, though,' she says, and picks up a stone and throws it. 'I can tell you didnae mean it. D'you want me tae tell them for you?'
         'No, it's okay,' I say.
         She leans in against me.' ";
+$censored = $text;
 
-$censored = str_replace($_GET["curseword"], "***", $text);
-
+if(isset($_GET["curseword"])) {
+    $censored = str_replace($_GET["curseword"], "***", $text);
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +42,7 @@ $censored = str_replace($_GET["curseword"], "***", $text);
     <!-- paragraph without curse words  -->
     <h2> <em>Censored version</em> </h2>
     <p> <?php echo $censored ?> </p>
-    <p>Length: <?php echo strlen($text)?> characters</p>
+    <p>Length: <?php echo strlen($censored)?> characters</p>
     <!-- /paragraph without curse words  -->
 </body>
 </html>
